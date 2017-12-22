@@ -22,17 +22,18 @@ function addItemTodo(text){
    checkbox.value = text;                          // The value of the element "checkbox" is equal to the text
                                                    // that we call the function with, which is the text that
                                                    // we have typed in the input field.
-  console.log(checkbox);
-  checkbox.onchange = function() {    // We disable the given checkbox when we change its state a.k.a. click on it.
-  checkbox.disabled  = true;
-};
 
    var label = document.createElement('label')     // We create a label for out checkbox.
 
         label.htmlFor = text;  // We bound the label with "htmlFor" to the text that we type in the input field.
         label.appendChild(document.createTextNode(text)); // We append the text in a new node of the label element.
 
-        list.appendChild(document.createElement('br'));   // With a new node we create a <br> (new line) element in the "list" element.        
+  checkbox.onchange = function() {    // We disable the given checkbox when we change its state a.k.a. click on it.
+  checkbox.disabled  = true;
+  label.style = "text-decoration: line-through;"; // Crossing over the text if the task is done.
+  };
+
+   list.appendChild(document.createElement('br'));   // With a new node we create a <br> (new line) element in the "list" element.        
 
    list.appendChild(checkbox);       // We add (append) a new node with the checkbox element to the list.
 
